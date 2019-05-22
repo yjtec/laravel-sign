@@ -1,0 +1,26 @@
+{
+    "name": "yjtec/laravel-sign",
+    "description": "laravel sign verfifal",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kidkang",
+            "email": "723616880@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Yjtec\\Sign\\":"src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yjtec\\Sign\\SignServiceProvider"
+            ]
+        }
+    }    
+}
