@@ -1,7 +1,8 @@
 <?php 
-namespace App\Services\Auth;
+namespace Yjtec\Sign;
 use Illuminate\Auth\TokenGuard;
-class LnsGuard extends TokenGuard {
+
+class SignGuard extends TokenGuard {
     public function __construct($provider,$request){
         $this->request = $request;
         $this->provider = $provider;
