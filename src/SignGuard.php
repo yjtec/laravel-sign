@@ -7,13 +7,14 @@ class SignGuard extends TokenGuard {
         $this->request = $request;
         $this->provider = $provider;
         $this->inputKey = 'appId';
-        $this->storageKey = 'appId';
+        $this->storageKey = 'app_id';
     }
     public function user(){
         if (! is_null($this->user)) {
             return $this->user;
         }
         $user = null;
+
         $token = $this->getTokenForRequest();
         if (! empty($token)) {
             $user = $this->provider->retrieveByCredentials(

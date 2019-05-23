@@ -2,6 +2,7 @@
 
 namespace Yjtec\Sign;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 class AuthApi
 {
     /**
@@ -20,6 +21,11 @@ class AuthApi
         ) {
             return $next($request);
         }
+
+        if(!$app = Auth::guard('sign')->user()){
+            throw new SignException('APP_ID_ERROR');
+        }
+        
         $param = $request->all();
         $appId = $request->appId;
         $timeStamp = $request->timeStamp;
@@ -27,9 +33,8 @@ class AuthApi
         if(!$appId || !$timeStamp || !$sign){
             throw new SignException('NO_PERMISSION');
         }
-
         $this->timeStamp = $timeStamp;
-        $this->secret = 'q1w2e3r4';
+        $this->secret = $app->secret;
         $this->sign = $sign;
         unset($param['sign']);
         $this->checkTime();

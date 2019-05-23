@@ -4,7 +4,7 @@ namespace Yjtec\Sign;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
-use SignGuard;
+use Yjtec\Sign\SignGuard;
 class SignServiceProvider extends ServiceProvider
 {
     /**
