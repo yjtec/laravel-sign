@@ -37,6 +37,11 @@ class AuthApi
         $this->secret = $app->secret;
         $this->sign = $sign;
         unset($param['sign']);
+        //清楚微信认证返回
+        if(isset($param['state']) && $param['state'] == 'wx_oauth'){
+            unset($param['code']);
+            unset($param['state']);
+        }
         $this->checkTime();
         $this->checkSign($param);
         return $next($request);
@@ -72,7 +77,6 @@ class AuthApi
         if($this->sign != $makeSign){
             throw new SignException('NO_PERMISSION',$result);
         }
-
     }
 
 }
