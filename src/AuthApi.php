@@ -17,7 +17,8 @@ class AuthApi
         //dd(env('APP_ENV'));
         if (
             in_array(env('APP_ENV'), ['local', 'test']) ||
-            $request->has('debug')
+            $request->has('debug') ||
+            !empty($request->header('x-ca-request-id'))
         ) {
             return $next($request);
         }
